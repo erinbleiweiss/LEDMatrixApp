@@ -116,14 +116,22 @@ export class MainComponent implements OnInit {
 
   }
 
+  copy(){
+    let newMatrix = _.cloneDeep(this.matrices[this.currentMatrix]);
+    this.matrices.splice(this.currentMatrix+1, 0, newMatrix);
+    this.currentMatrix++;
+  }
+
   add(){
     this.matrices.splice(this.currentMatrix+1, 0, this.generateNewMatrix());
     this.currentMatrix++;
   }
 
   remove(){
-    this.matrices.splice(this.currentMatrix, 1);
-    this.currentMatrix = Math.max(this.currentMatrix - 1, 0);
+    if (this.matrices.length > 1) {
+      this.matrices.splice(this.currentMatrix, 1);
+      this.currentMatrix = Math.max(this.currentMatrix - 1, 0);
+    }
   }
 
 
