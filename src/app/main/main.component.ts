@@ -117,7 +117,7 @@ export class MainComponent implements OnInit {
   }
 
   add(){
-    this.matrices.push(this.generateNewMatrix());
+    this.matrices.splice(this.currentMatrix+1, 0, this.generateNewMatrix());
     this.currentMatrix++;
   }
 
