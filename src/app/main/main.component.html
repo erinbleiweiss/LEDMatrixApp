@@ -1,4 +1,5 @@
 <jrl-matrix [matrix]="matrices[currentMatrix]"></jrl-matrix>
+
 <div class="move">
   <button (click)="moveUp()">
     <i class="fa fa-arrow-up" aria-hidden="true"></i>
@@ -12,7 +13,22 @@
   <button (click)="moveRight()">
     <i class="fa fa-arrow-right" aria-hidden="true"></i>
   </button>
+  <div class="spacer">&nbsp;</div>
+  <button (click)="add()">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+  </button>
+  <button (click)="remove()">
+    <i class="fa fa-minus" aria-hidden="true"></i>
+  </button>
 </div>
+
+<div class="matrices">
+  <jrl-matrix-thumbnail
+    *ngFor="let matrix of matrices"
+    [matrix]="matrix">
+  </jrl-matrix-thumbnail>
+</div>
+
 <textarea [value]="getOutput()"></textarea>
 
 

@@ -9,6 +9,7 @@ import { LedComponent } from './main/matrix/led/led.component';
 import { ColorComponent } from './main/color-palette/color/color.component';
 import { EnumeratePipe } from './pipes/enumerate.pipe';
 import { RgbService } from "./services/rgb.service";
+import { MatrixThumbnailComponent } from './main/matrix/matrix-thumbnail/matrix-thumbnail.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RgbService } from "./services/rgb.service";
     ColorPaletteComponent,
     LedComponent,
     ColorComponent,
-    EnumeratePipe
+    EnumeratePipe,
+    MatrixThumbnailComponent
   ],
   imports: [
     BrowserModule

@@ -19,3 +19,14 @@ textarea {
   border: 2px solid black;
   background-color: #aaa;
 }
+
+.spacer {
+  display: inline-block;
+  height: 30px;
+  width: 50px;
+}
+
+jrl-matrix-thumbnail {
+  display: inline-block;
+  margin: 0 10px;
+}

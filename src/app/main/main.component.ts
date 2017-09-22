@@ -42,9 +42,9 @@ export class MainComponent implements OnInit {
           }
         }
       }
+      string += `delay(500);\n`;
+      string += `matrix.fillScreen(matrix.Color333(0, 0, 0));\n`;
     }
-    string += `delay(500);\n`;
-    string += `matrix.fillScreen(matrix.Color333(0, 0, 0));\n`;
     return string;
   }
 
@@ -82,5 +82,29 @@ export class MainComponent implements OnInit {
       }
     }
   }
+
+  moveLeft(){
+    let currentMatrix = this.matrices[this.currentMatrix];
+    let copy = _.cloneDeep(currentMatrix);
+
+    for (let row=0; row<currentMatrix.length; row++) {
+
+
+    }
+      // for (let row=0; row<currentMatrix.length; row++) {
+    //
+    //   for (let col=0; col<currentMatrix[row].length; col++){
+    //
+    //
+    //   }
+    // }
+
+  }
+
+  add(){
+    this.matrices.push(this.generateNewMatrix());
+    this.currentMatrix++;
+  }
+
 
 }
