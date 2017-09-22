@@ -99,6 +99,24 @@ export class MainComponent implements OnInit {
     }
   }
 
+  moveRight(){
+    let currentMatrix = this.matrices[this.currentMatrix];
+    let prevLED;
+    for (let row=0; row<currentMatrix[0].length; row++) {
+      for (let col=0; col<currentMatrix[row].length; col++) {
+        let ledCopy = _.cloneDeep(currentMatrix[row][col]);
+        if (col != 0){
+          currentMatrix[row][col].active = prevLED.active;
+          currentMatrix[row][col].color = prevLED.color;
+        } else {
+          currentMatrix[row][col].active = false;
+          currentMatrix[row][col].color = new Color(0, 0, 0);
+        }
+        prevLED = ledCopy;
+      }
+    }
+  }
+
   select(i){
     this.currentMatrix = i;
   }
