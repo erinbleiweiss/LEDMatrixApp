@@ -101,9 +101,29 @@ export class MainComponent implements OnInit {
 
   }
 
+  select(i){
+    this.currentMatrix = i;
+  }
+
+  reset(){
+    let currentMatrix = this.matrices[this.currentMatrix];
+    for (let row=0; row<currentMatrix.length; row++){
+      for (let col=0; col<currentMatrix[row].length; col++) {
+          currentMatrix[row][col].active = false;
+          currentMatrix[row][col].color = new Color(0, 0, 0);
+      }
+    }
+
+  }
+
   add(){
     this.matrices.push(this.generateNewMatrix());
     this.currentMatrix++;
+  }
+
+  remove(){
+    this.matrices.splice(this.currentMatrix, 1);
+    this.currentMatrix = Math.max(this.currentMatrix - 1, 0);
   }
 
 

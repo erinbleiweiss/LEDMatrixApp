@@ -15,7 +15,7 @@ textarea {
 .move button{
   width: 30px;
   height: 30px;
-  margin: 10px 20px;
+  margin: 10px 10px;
   border: 2px solid black;
   background-color: #aaa;
 }
@@ -23,10 +23,14 @@ textarea {
 .spacer {
   display: inline-block;
   height: 30px;
-  width: 50px;
+  width: 40px;
 }
 
 jrl-matrix-thumbnail {
   display: inline-block;
   margin: 0 10px;
+}
+
+jrl-matrix-thumbnail.selected {
+  border: 3px solid red;
 }
