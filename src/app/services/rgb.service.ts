@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Color} from "../models/led";
+import {Color} from "../models/color";
 import {Subject, Observable} from "rxjs";
 
 @Injectable()

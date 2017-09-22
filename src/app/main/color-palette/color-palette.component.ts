@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Color} from "../../models/led";
+import {Color} from "../../models/color";
 import {RgbService} from "../../services/rgb.service";
 
 @Component({

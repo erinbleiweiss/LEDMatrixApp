@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, HostListener} from '@angular/core';
-import {LED} from "../../../models/color";
-import {Color} from "../../../models/led";
+import {LED} from "../../../models/led";
+import {Color} from "../../../models/color";
 import {Subscription} from "rxjs";
 import {RgbService} from "../../../services/rgb.service";
 

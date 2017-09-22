@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LED} from "../models/color";
+import {LED} from "../models/led";
 
 @Component({
   selector: 'jrl-main',

@@ -1,6 +1,5 @@
 import {Component, OnInit, HostListener, Input} from '@angular/core';
-import {LED} from "../../models/color";
-import {Color} from "../../models/led";
+import {LED} from "../../models/led";
 
 @Component({
   selector: 'jrl-matrix',
