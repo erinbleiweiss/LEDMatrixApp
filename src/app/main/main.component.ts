@@ -85,20 +85,18 @@ export class MainComponent implements OnInit {
 
   moveLeft(){
     let currentMatrix = this.matrices[this.currentMatrix];
-    let copy = _.cloneDeep(currentMatrix);
-
-    for (let row=0; row<currentMatrix.length; row++) {
-
-
+    for (let row=0; row<currentMatrix[0].length; row++) {
+      for (let col=0; col<currentMatrix[row].length; col++) {
+        if (col != currentMatrix[row].length - 1){
+          let nextLED = currentMatrix[row][col+1];
+          currentMatrix[row][col].active = nextLED.active;
+          currentMatrix[row][col].color = nextLED.color;
+        } else {
+          currentMatrix[row][col].active = false;
+          currentMatrix[row][col].color = new Color(0, 0, 0);
+        }
+      }
     }
-      // for (let row=0; row<currentMatrix.length; row++) {
-    //
-    //   for (let col=0; col<currentMatrix[row].length; col++){
-    //
-    //
-    //   }
-    // }
-
   }
 
   select(i){
