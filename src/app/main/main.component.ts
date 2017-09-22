@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LED} from "../models/led";
+import {Color} from "../models/color";
+import * as _ from "lodash";
 
 @Component({
   selector: 'jrl-main',
@@ -33,14 +35,38 @@ export class MainComponent implements OnInit {
 
   getOutput(){
     let string = "";
-    for (let row of this.currentMatrix){
-      for (let led of row){
-        if (led.active && led.color.hex != "#000000"){
-          string += `matrix.drawPixel(${led.row}, ${led.col}, matrix.Color333(${led.color.red}, ${led.color.green}, ${led.color.blue}));\n`
+    for (let matrix of this.matricies) {
+      for (let row of matrix) {
+        for (let led of row) {
+          if (led.active && led.color.hex != "#000000") {
+            string += `matrix.drawPixel(${led.row}, ${led.col}, matrix.Color333(${led.color.red}, ${led.color.green}, ${led.color.blue}));\n`
+          }
         }
       }
     }
+    string += `delay(500);\n`;
+    string += `matrix.fillScreen(matrix.Color333(0, 0, 0));\n`;
     return string;
+  }
+
+  moveDown(){
+    let currentMatrix = this.matricies[0];
+    let prevRow;
+    for (let row=0; row<currentMatrix.length; row++){
+      let rowCopy = _.cloneDeep(currentMatrix[row]);
+      for (let col=0; col<currentMatrix[row].length; col++){
+        if (prevRow){
+          console.log("yes");
+          currentMatrix[row][col].active = prevRow[col].active;
+          currentMatrix[row][col].color = prevRow[col].color;
+        } else {
+          console.log("no");
+          currentMatrix[row][col].active = false;
+          currentMatrix[row][col].color = new Color(0, 0, 0);
+        }
+      }
+      prevRow = rowCopy;
+    }
   }
 
 }

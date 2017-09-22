@@ -1,5 +1,20 @@
 <jrl-matrix [matrix]="currentMatrix"></jrl-matrix>
+<div class="move">
+  <button (click)="moveUp()">
+    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+  </button>
+  <button (click)="moveDown()">
+    <i class="fa fa-arrow-down" aria-hidden="true"></i>
+  </button>
+  <button (click)="moveLeft()">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+  </button>
+  <button (click)="moveRight()">
+    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+  </button>
+</div>
 <textarea [value]="getOutput()"></textarea>
+
 
 <jrl-color-palette></jrl-color-palette>
 
