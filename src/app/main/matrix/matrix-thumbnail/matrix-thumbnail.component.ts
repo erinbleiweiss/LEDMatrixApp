@@ -15,4 +15,12 @@ export class MatrixThumbnailComponent implements OnInit {
   ngOnInit() {
   }
 
+  getColor(led){
+    if (led.active){
+      return {'background-color': led.color.hex};
+    } else {
+      return {'background-color': '#000000'};
+    }
+  }
+
 }
