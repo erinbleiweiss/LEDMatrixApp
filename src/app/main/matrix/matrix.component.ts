@@ -1,5 +1,6 @@
 import {Component, OnInit, HostListener} from '@angular/core';
 import {LED} from "../../models/color";
+import {Color} from "../../models/led";
 
 @Component({
   selector: 'jrl-matrix',
@@ -41,6 +42,18 @@ export class MatrixComponent implements OnInit {
     event.preventDefault();
     this.mouseDown = false;
     this.rightClickDown = true;
+  }
+
+  getOutput(){
+    let string = "";
+    for (let row of this.leds){
+      for (let led of row){
+        if (led.active && led.color.hex != "#000000"){
+          string += `matrix.drawPixel(${led.row}, ${led.col}, matrix.Color333(${led.color.red}, ${led.color.green}, ${led.color.blue}));\n`
+        }
+      }
+    }
+    return string;
   }
 
 }

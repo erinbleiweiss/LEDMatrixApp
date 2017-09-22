@@ -12,3 +12,8 @@ td {
   margin: 0;
   padding: 0;
 }
+
+textarea {
+  width: 500px;
+  height: 250px;
+}
