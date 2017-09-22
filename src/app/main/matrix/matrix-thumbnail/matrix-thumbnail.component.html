@@ -1,0 +1,10 @@
+<body>
+  <table>
+    <tr *ngFor="let row of matrix">
+      <td *ngFor="let led of row">
+        <div class="inner-cell" [ngStyle]="{'background-color': led.color.hex}"></div>
+      </td>
+    </tr>
+  </table>
+</body>
+
