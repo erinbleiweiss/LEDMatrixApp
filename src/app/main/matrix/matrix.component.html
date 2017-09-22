@@ -1,0 +1,9 @@
+<body>
+  <table>
+    <tr *ngFor="let row of leds">
+      <td *ngFor="let led of row">
+        <jrl-led [led]="led" [mouseDown]="mouseDown" [rightClickDown]="rightClickDown"></jrl-led>
+      </td>
+    </tr>
+  </table>
+</body>
