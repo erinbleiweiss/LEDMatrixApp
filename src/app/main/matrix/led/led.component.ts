@@ -34,10 +34,8 @@ export class LedComponent implements OnInit {
   }
 
   setLED(){
-    if (!this.led.active){
-      this.led.active = true;
-      this.led.color = this.selectedColor;
-    }
+    this.led.active = true;
+    this.led.color = this.selectedColor;
   }
 
   @HostListener('mousemove', ['$event'])

@@ -11,14 +11,13 @@ import * as _ from "lodash";
 export class MainComponent implements OnInit {
   width: number = 32;
   height: number = 32;
-  currentMatrix: LED[][] = [];
-  matricies: LED[][][] = [];
+  currentMatrix: number = 0;
+  matrices: LED[][][] = [];
 
   constructor() { }
 
   ngOnInit() {
-    this.currentMatrix = this.generateNewMatrix();
-    this.matricies.push(this.currentMatrix);
+    this.matrices.push(this.generateNewMatrix());
   }
 
   generateNewMatrix(){
@@ -35,7 +34,7 @@ export class MainComponent implements OnInit {
 
   getOutput(){
     let string = "";
-    for (let matrix of this.matricies) {
+    for (let matrix of this.matrices) {
       for (let row of matrix) {
         for (let led of row) {
           if (led.active && led.color.hex != "#000000") {
@@ -50,7 +49,7 @@ export class MainComponent implements OnInit {
   }
 
   moveDown(){
-    let currentMatrix = this.matricies[0];
+    let currentMatrix = this.matrices[this.currentMatrix];
     let prevRow;
     for (let row=0; row<currentMatrix.length; row++){
       let rowCopy = _.cloneDeep(currentMatrix[row]);
@@ -68,7 +67,7 @@ export class MainComponent implements OnInit {
   }
 
   moveUp(){
-    let currentMatrix = this.matricies[0];
+    let currentMatrix = this.matrices[this.currentMatrix];
     let nextRow;
     for (let row=0; row<currentMatrix.length; row++){
       for (let col=0; col<currentMatrix[row].length; col++){
