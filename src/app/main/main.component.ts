@@ -56,16 +56,31 @@ export class MainComponent implements OnInit {
       let rowCopy = _.cloneDeep(currentMatrix[row]);
       for (let col=0; col<currentMatrix[row].length; col++){
         if (prevRow){
-          console.log("yes");
           currentMatrix[row][col].active = prevRow[col].active;
           currentMatrix[row][col].color = prevRow[col].color;
         } else {
-          console.log("no");
           currentMatrix[row][col].active = false;
           currentMatrix[row][col].color = new Color(0, 0, 0);
         }
       }
       prevRow = rowCopy;
+    }
+  }
+
+  moveUp(){
+    let currentMatrix = this.matricies[0];
+    let nextRow;
+    for (let row=0; row<currentMatrix.length; row++){
+      for (let col=0; col<currentMatrix[row].length; col++){
+        if (row != currentMatrix.length-1){
+          nextRow = _.cloneDeep(currentMatrix[row+1]);
+          currentMatrix[row][col].active = nextRow[col].active;
+          currentMatrix[row][col].color = nextRow[col].color;
+        } else {
+          currentMatrix[row][col].active = false;
+          currentMatrix[row][col].color = new Color(0, 0, 0);
+        }
+      }
     }
   }
 
