@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {LED} from "../models/led";
 import {Color} from "../models/color";
+import { DomSanitizer } from "@angular/platform-browser";
+import { saveAs } from 'file-saver';
 import * as _ from "lodash";
 
 @Component({
@@ -14,7 +16,7 @@ export class MainComponent implements OnInit {
   currentMatrix: number = 0;
   matrices: LED[][][] = [];
 
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.matrices.push(this.generateNewMatrix());
@@ -148,6 +150,13 @@ export class MainComponent implements OnInit {
       this.matrices.splice(this.currentMatrix, 1);
       this.currentMatrix = Math.max(this.currentMatrix - 1, 0);
     }
+  }
+
+  save(){
+    let data = JSON.stringify(this.matrices);
+    let blob = new Blob([data], { type: 'application/json' });
+    saveAs(blob, "led_matrix.json");
+
   }
 
 
