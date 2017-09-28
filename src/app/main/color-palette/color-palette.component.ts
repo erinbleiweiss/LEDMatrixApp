@@ -16,10 +16,10 @@ export class ColorPaletteComponent implements OnInit {
   ngOnInit() {
     let unsortedColors = [];
 
-    for (let r=0; r<this.colorRange; r++){
-      for (let b=0; b<this.colorRange; b++){
-        for (let g=0; g<this.colorRange; g++){
-          if (r !== g && g !== b){
+    for (let r=0; r<=this.colorRange; r++){
+      for (let b=0; b<=this.colorRange; b++){
+        for (let g=0; g<=this.colorRange; g++){
+          if ((r !== g && g !== b) || (r == this.colorRange && g == this.colorRange && b == this.colorRange)){
             unsortedColors.push(new Color(r, g, b));
           }
         }

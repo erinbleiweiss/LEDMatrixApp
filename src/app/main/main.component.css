@@ -12,6 +12,10 @@ textarea {
   height: 250px;
 }
 
+.matrics {
+  width: 1000px;
+}
+
 .move button{
   width: 30px;
   height: 30px;
