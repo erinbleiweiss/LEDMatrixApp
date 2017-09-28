@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LED} from "../models/led";
 import {Color} from "../models/color";
-import { DomSanitizer } from "@angular/platform-browser";
 import { saveAs } from 'file-saver';
 import * as _ from "lodash";
 
@@ -16,7 +15,7 @@ export class MainComponent implements OnInit {
   currentMatrix: number = 0;
   matrices: LED[][][] = [];
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor() { }
 
   ngOnInit() {
     this.matrices.push(this.generateNewMatrix());
@@ -156,6 +155,30 @@ export class MainComponent implements OnInit {
     let data = JSON.stringify(this.matrices);
     let blob = new Blob([data], { type: 'application/json' });
     saveAs(blob, "led_matrix.json");
+  }
+
+  upload(event){
+    let file = event.target.files[0];
+    let reader: FileReader = new FileReader();
+    let fileType = event.target.parentElement.id;
+    reader.onloadend = (e) => {
+      let obj = JSON.parse(reader.result);
+
+      for (let matrix of obj){
+        for (let row of matrix){
+          for (let led of row){
+            let new_led = new LED(led.row, led.col);
+            new_led.color = led.color;
+            new_led.active = led.active;
+            led = new_led;
+          }
+        }
+      }
+      this.matrices = obj;
+
+    };
+
+    reader.readAsText(file);
 
   }
 
