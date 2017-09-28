@@ -38,12 +38,11 @@
     <i class="fa fa-floppy-o" aria-hidden="true"></i>
   </button>
 
-  <i class="fa fa-upload" aria-hidden="true"></i>
-  <input type="file" (change)="upload($event)" #input>
+  <button (click)="fileInput.click()">
+    <i class="fa fa-upload" aria-hidden="true"></i>
+  </button>
+  <input type="file" (change)="upload($event)" style="display: none" #fileInput>
 
-  <!--<button (click)="upload($event)">-->
-    <!--<i class="fa fa-upload" aria-hidden="true"></i>-->
-  <!--</button>-->
 
 </div>
 
